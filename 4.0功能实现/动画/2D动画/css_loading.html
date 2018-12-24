@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.out-round {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				margin: 150px auto;
+				border: 3px solid #FF298C;
+				border-left: 3px solid transparent;
+				animation: outRound 1s linear infinite running;
+			}
+			
+			@keyframes outRound {
+				0% {
+					transform: rotate(120deg)
+				}
+				100% {
+					transform: rotate(-240deg)
+				}
+			}
+			/*左边两个半圆*/
+			
+			.lt-round,
+			.lt-mask {
+				position: absolute;
+				width: 35px;
+				height: 70px;
+				border-radius: 35px 0 0 35px;
+				transform-origin: right center;
+			}
+			/*右边两个半圆*/
+			
+			.rt-round,
+			.rt-mask {
+				position: absolute;
+				left: 50%;
+				width: 35px;
+				height: 70px;
+				border-radius: 0 35px 35px 0;
+			}
+			
+			@keyframes ltRound {
+				0% {
+					transform: rotate(360deg);
+				}
+				24.9% {
+					z-index: 3;
+				}
+				25% {
+					z-index: 1;
+					transform: rotate(180deg);
+				}
+				50% {
+					transform: rotate(0deg);
+				}
+				74.9% {
+					z-index: 1;
+				}
+				75%,
+				100% {
+					z-index: 3;
+				}
+			}
+			/*右边红色圆通过z-index来控制显示和隐藏，从而达到在适当时间配上左半圆的效果*/
+			
+			@keyframes rtRound {
+				0%,
+				24.9% {
+					z-index: 1;
+				}
+				25% {
+					z-index: -3;
+				}
+				74.9% {
+					z-index: -3;
+				}
+				75%,
+				100% {
+					z-index: 1;
+				}
+			}
+			/*左边粉色完成第二圈的旋转*/
+			
+			@keyframes ltMask {
+				0%,
+				25%,
+				50% {
+					transform: rotate(360deg);
+				}
+				75% {
+					transform: rotate(180deg);
+				}
+				100% {
+					transform: rotate(0deg);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="con-wrap">
+
+			<!--外圈-->
+			<div class="out-round"></div>
+
+			<!--内圆，里面有半圆四个-->
+			<div class="in-round">
+				<div class="lt-round"></div>
+				<div class="lt-mask"></div>
+				<div class="rt-round"></div>
+				<div class="rt-mask"></div>
+			</div>
+		</div>
+	</body>
+
+</html>

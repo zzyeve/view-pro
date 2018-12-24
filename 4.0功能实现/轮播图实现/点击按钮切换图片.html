@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			ul li{list-style: none;}
+			.box{width: 600px;
+				position: relative;margin:100px auto;}
+			ul li{
+				font-size: 50px;text-align: center;
+				color: #fff;line-height: 300px;
+				width: 600px;height: 400px; position: absolute;
+				display:none;
+			}
+			ul li.show{display: block;}
+			ul li:nth-child(1){background: red;}
+			ul li:nth-child(2){background: blue;}
+			ul li:nth-child(3){background: green;}
+			ul li:nth-child(4){background: orange;}
+			ul li:nth-child(5){background: blue;}
+			ul li:nth-child(6){background: green;}
+			ul li:nth-child(7){background: orange;}
+			ul li:nth-child(8){background: blue;}
+			ul li:nth-child(9){background: green;}
+			ul li:nth-child(10){background: orange;}
+			nav{position: absolute;top:300px;left: 150px;}
+			nav a {display: inline-block;background: #000;
+			width: 20px;height: 20px;border-radius:10px ;}
+			nav a.active{background: yellowgreen;}
+			button{position: absolute;top: 300px;}
+			#before{left: 100px;}
+			#next{left: 430px;}
+		</style>	
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li class="show">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>
+			</ul>
+			<nav>
+				<a href="javascript:;" class="active"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+			</nav>
+			<button id="before">上一张</button>
+			<button id="next">下一张</button>
+		</div>
+		
+		
+			
+		<script>
+			window.onload = function(){
+				var next = document.getElementById("next");
+				var before = document.getElementById("before");
+				var lis = document.getElementsByTagName("li");
+				var allA=document.getElementsByTagName("a");
+				var index = 0;
+				next.onclick = function(){
+					index++;
+					if(index>=lis.length){
+						index=0;
+					}
+					showLi(index);
+					showNav(index);
+				}
+				before.onclick = function(){
+					index--;
+					if(index<0){
+						index=9;
+					}
+					showLi(index);
+					showNav(index);
+				}
+				//定义函数用于展示第几个li
+				function showLi(ind){
+					//先把所有的图片隐藏
+					for(var i=0; i<lis.length; i++){
+						lis[i].className ="";
+					}
+					lis[ind].className = "show";
+				}
+				function showNav(ind){
+					for(var i=0;i<allA.length;i++){
+						allA[i].className = "";
+					}
+					allA[ind].className = "active";
+				}
+				for(var i = 0; i < allA.length; i++){
+	                allA[i].index = i;
+	                console.log(i);
+	                allA[i].onmouseover = function (){
+	                    index = this.index;
+	                    console.log(index);
+	                    // 将li显示为第n张
+	                    showLi(this.index);
+	                    // 第n个a标签的背景做一个切换
+	                    showNav(this.index);
+	                };
+	           }
+			}
+		</script>
+		
+		
+	</body>
+</html>

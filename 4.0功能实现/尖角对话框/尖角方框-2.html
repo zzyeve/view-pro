@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		 <style>
+		    /*.box{
+		        width: 0;
+		        height: 0;
+		        border-left:50px solid red;
+		        border-bottom:50px solid blue;
+		        border-top:50px solid black;
+		        border-right:50px solid purple
+		    }*/
+		    .box{
+		      width:0px;
+		      height: 0;
+		      border:50px solid transparent; /*这里我们将元素的边框宽度设置为50px，transparent表示边框颜色是透明的，solid表示边框是实线的*/
+		      border-right-color: black;  /*这里我们仅将上边框的颜色设置为黑色，众所周知，css后面的样式代码会覆盖之前的相同的样式代码，至于其他三边的还是透明色*/
+		      /*border-bottom-color: black; //这里设置底部边框色为黑色
+		        border-left-color: black;   //这里设置左边边框色为黑色
+		        border-right-color:black    //这里设置右边边框色为黑色*/
+		  }
+		  </style>
+	</head>
+	<body>
+		<div class="box">
+			
+		</div>
+	</body>
+</html>
